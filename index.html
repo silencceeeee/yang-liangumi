@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1440" />
+<script>document.documentElement.classList.add('js');</script>
+<title>【养】良谷米 · 一碗良谷，养家人，养嘉人</title>
+<style>
+/* ============================================================
+   【养】良谷米 — 新中式高端农产品电商首页（PC 横版 / 设计宽度 1440）
+   主色：红棕 #7A3A2A · 米白 #FBF7EE · 浅金 #C8A360 · 自然绿 #4F6B47
+   模块顺序严格对应需求：导航 / 首屏Banner / 益阳原产 / 人气单品 /
+   山野宝藏 / 核心卖点 / 用户口碑 / 服务保障 / 品牌理念 / 页脚
+   ============================================================ */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#2C1F18; --ink-2:#5A463A; --ink-3:#8A7566;
+  --brown:#7A3A2A; --brown-deep:#5C2A1E; --brown-soft:#A8644C;
+  --gold:#C8A360; --gold-soft:#E6D3AA; --gold-line:rgba(200,163,96,.42);
+  --cream:#FBF7EE; --cream-2:#F4EDDE; --cream-3:#EFE6D3;
+  --green:#4F6B47; --green-deep:#3A5134; --green-soft:#7E9A6C;
+  --shadow-s:0 8px 22px rgba(74,50,34,.08);
+  --shadow-m:0 20px 44px rgba(74,50,34,.12);
+  --shadow-l:0 34px 80px rgba(74,50,34,.18);
+  --serif:"Source Han Serif SC","Noto Serif SC","Songti SC","STSong","SimSun",serif;
+  --sans:"Microsoft YaHei","PingFang SC","Hiragino Sans GB","Helvetica Neue",Arial,sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+html{scroll-behavior:smooth}
+body{min-width:1440px;font-family:var(--sans);color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+img{display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+::selection{background:rgba(200,163,96,.32)}
+.wrap{width:1280px;margin:0 auto;position:relative}
+
+/* 通用标题 */
+.eyebrow{font-size:13px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:var(--gold);margin-bottom:16px}
+.sec-title{font-family:var(--serif);font-weight:700;font-size:44px;line-height:1.3;letter-spacing:.04em;color:var(--ink)}
+.sec-title em{font-style:normal;color:var(--brown)}
+.sec-sub{margin-top:16px;font-size:16px;line-height:1.9;color:var(--ink-3);letter-spacing:.05em}
+.sec-head{text-align:center;margin-bottom:54px}
+.sec-head .rule{width:64px;height:1px;margin:24px auto 0;position:relative;
+  background:linear-gradient(90deg,transparent,var(--gold-line) 20%,var(--gold-line) 80%,transparent)}
+.sec-head .rule::after{content:"";position:absolute;left:50%;top:-3px;width:7px;height:7px;transform:translateX(-50%) rotate(45deg);background:var(--gold);opacity:.75}
+.sec-head--left{text-align:left}
+.sec-head--left .rule{margin-left:0;background:linear-gradient(90deg,var(--gold-line),transparent)}
+
+/* 按钮 */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 30px;border-radius:2px;
+  font-size:15px;letter-spacing:.12em;transition:all .35s var(--ease)}
+.btn svg{width:16px;height:16px;stroke-width:1.7}
+.btn--green{background:linear-gradient(135deg,#5C7A50,#3F5B38);color:#FBF7EE;box-shadow:0 10px 24px rgba(63,91,56,.26)}
+.btn--green:hover{transform:translateY(-2px);box-shadow:0 16px 30px rgba(63,91,56,.32)}
+.btn--brown{background:linear-gradient(135deg,#8A4433,#632D21);color:#FBF7EE;box-shadow:0 10px 24px rgba(99,45,33,.24)}
+.btn--brown:hover{transform:translateY(-2px)}
+.btn--light{background:rgba(251,247,238,.92);color:var(--brown);border:1px solid rgba(200,163,96,.7)}
+.btn--light:hover{background:#fff;transform:translateY(-2px)}
+.btn--ghost{border:1px solid rgba(200,163,96,.75);color:var(--brown);background:rgba(251,247,238,.6)}
+.btn--ghost:hover{background:#fff;transform:translateY(-2px)}
+
+/* ---------- 1 顶部导航 ---------- */
+.nav{position:sticky;top:0;z-index:60;height:88px;background:rgba(251,247,238,.94);
+  backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(200,163,96,.28);
+  transition:box-shadow .4s var(--ease),height .4s var(--ease)}
+.nav.is-stuck{box-shadow:0 10px 30px rgba(74,50,34,.09);height:76px}
+.nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:14px}
+.logo img{width:66px;height:66px;object-fit:contain;mix-blend-mode:multiply;transition:width .4s var(--ease),height .4s var(--ease)}
+.nav.is-stuck .logo img{width:58px;height:58px}
+.logo-text{display:flex;flex-direction:column;gap:4px}
+.logo-name{font-family:var(--serif);font-weight:700;font-size:30px;letter-spacing:.18em;color:var(--brown);line-height:1}
+.logo-tag{font-size:10px;letter-spacing:.3em;color:var(--ink-3);text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:42px}
+.nav-links a{font-size:15px;color:var(--ink-2);letter-spacing:.1em;position:relative;padding:6px 0;transition:color .3s}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--gold);transition:right .35s var(--ease)}
+.nav-links a:hover,.nav-links a.is-active{color:var(--brown)}
+.nav-links a:hover::after,.nav-links a.is-active::after{right:0}
+
+/* ---------- 2 首屏 Banner ---------- */
+.hero{position:relative;height:780px;overflow:hidden;background:#EFE0C4}
+.hero-bg{position:absolute;inset:0;background:url("images/hero-field.jpg") center 42% / cover no-repeat;transform:scale(1.02)}
+.hero-veil{position:absolute;inset:0;z-index:2;
+  background:linear-gradient(100deg,rgba(251,247,238,.94) 0%,rgba(251,247,238,.82) 30%,rgba(251,247,238,.44) 52%,rgba(251,247,238,.06) 74%,rgba(251,247,238,0) 100%),
+             linear-gradient(180deg,rgba(251,247,238,.5),rgba(251,247,238,0) 40%,rgba(92,42,30,.16) 100%)}
+.hero-inner{position:relative;z-index:4;height:100%;display:grid;grid-template-columns:1fr 500px;align-items:center}
+.hero-copy{text-align:center;padding:0 40px 60px 0}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;height:34px;padding:0 18px;border-radius:2px;
+  border:1px solid rgba(200,163,96,.6);background:rgba(255,255,255,.62);font-size:12px;letter-spacing:.22em;color:var(--brown);margin-bottom:26px}
+.hero-badge i{width:5px;height:5px;background:var(--gold);transform:rotate(45deg)}
+.hero-title{font-family:var(--serif);font-weight:700;font-size:62px;line-height:1.26;letter-spacing:.03em;color:var(--brown-deep)}
+.hero-title .nl{display:inline-block}
+.hero-title .hl{position:relative;color:var(--brown)}
+.hero-title .hl::after{content:"";position:absolute;left:2px;right:2px;bottom:8px;height:12px;z-index:-1;
+  background:linear-gradient(90deg,rgba(200,163,96,.4),rgba(200,163,96,.14))}
+.hero-sub{margin-top:26px;font-size:17px;letter-spacing:.14em;color:var(--ink-2);display:flex;align-items:center;justify-content:center;gap:16px}
+.hero-sub .sep{width:1px;height:16px;background:var(--gold-line)}
+.hero-actions{margin-top:38px;display:flex;justify-content:center;gap:16px}
+.hero-meta{margin-top:46px;display:flex;justify-content:center;gap:52px}
+.hero-meta div{display:flex;flex-direction:column;align-items:center;gap:8px}
+.hero-meta b{font-family:var(--serif);font-size:26px;color:var(--brown);letter-spacing:.04em}
+.hero-meta span{font-size:12px;letter-spacing:.2em;color:var(--ink-3)}
+.hero-stage{position:relative;height:100%}
+.hero-product{position:absolute;right:-40px;bottom:0;width:660px;filter:drop-shadow(0 30px 46px rgba(74,44,28,.22))}
+.hero-tag{position:absolute;left:0;bottom:52px;z-index:5;display:flex;align-items:center;gap:12px;padding:12px 18px;border-radius:2px;
+  background:rgba(251,247,238,.94);border:1px solid rgba(200,163,96,.5);box-shadow:var(--shadow-s)}
+.hero-tag .dot{width:34px;height:34px;border-radius:50%;background:rgba(79,107,71,.1);display:grid;place-items:center;color:var(--green)}
+.hero-tag .dot svg{width:17px;height:17px}
+.hero-tag .t1{display:block;font-family:var(--serif);font-size:15px;color:var(--brown);letter-spacing:.08em}
+.hero-tag .t2{display:block;margin-top:4px;font-size:10px;letter-spacing:.16em;color:var(--ink-3)}
+/* ---------- 3 益阳原产，自然滋养 ---------- */
+.origin{padding:112px 0 108px;background:linear-gradient(180deg,#FBF7EE,#F6F0E4 60%,#FBF7EE)}
+.origin-top{display:flex;align-items:flex-end;justify-content:space-between;gap:70px;margin-bottom:52px}
+.origin-lead{max-width:520px;font-size:15px;line-height:2.1;color:var(--ink-2);letter-spacing:.04em}
+.origin-lead strong{color:var(--brown);font-weight:600}
+.origin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.origin-card{background:#fff;border:1px solid rgba(200,163,96,.28);border-radius:3px;overflow:hidden;
+  box-shadow:var(--shadow-s);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.origin-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-m)}
+.origin-card .pic{position:relative;height:272px;overflow:hidden}
+.origin-card .pic img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.origin-card:hover .pic img{transform:scale(1.06)}
+.origin-card .pic::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(44,31,24,.06),rgba(44,31,24,.22))}
+.origin-card .no{position:absolute;left:20px;top:18px;z-index:2;font-family:var(--serif);font-size:13px;letter-spacing:.2em;
+  color:#F7EDD8;background:rgba(92,42,30,.6);padding:6px 12px;border-radius:2px}
+.origin-card .txt{padding:28px 30px 32px}
+.origin-card h3{font-family:var(--serif);font-size:22px;color:var(--ink);letter-spacing:.05em;margin-bottom:12px}
+.origin-card p{font-size:14px;line-height:1.95;color:var(--ink-3);letter-spacing:.03em}
+.origin-card .tagline{margin-top:20px;padding-top:18px;border-top:1px dashed rgba(200,163,96,.42);
+  font-size:12px;letter-spacing:.18em;color:var(--brown);display:flex;align-items:center;gap:8px}
+.origin-card .tagline i{width:4px;height:4px;background:var(--gold);transform:rotate(45deg)}
+
+/* ---------- 4 人气单品 ---------- */
+.popular{position:relative;padding:112px 0 118px;overflow:hidden;background:#E7EADF}
+.popular-bg{position:absolute;inset:0;background:url("images/bg-popular.jpg") center/cover no-repeat;filter:saturate(.9)}
+.popular-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(251,247,238,.93),rgba(251,247,238,.84) 42%,rgba(251,247,238,.92))}
+.popular .wrap{z-index:2}
+.item-list{display:flex;flex-direction:column;gap:26px}
+.item-card{display:grid;grid-template-columns:462px 1fr;background:#fff;border:1px solid rgba(200,163,96,.3);border-radius:3px;
+  overflow:hidden;box-shadow:var(--shadow-s);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.item-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-m)}
+.item-pic{position:relative;height:352px;padding:22px;display:grid;place-items:center;
+  background:linear-gradient(160deg,#FBF6EA,#F1E6D0 62%,#E7D8BC)}
+.item-pic::after{content:"";position:absolute;left:12%;right:12%;bottom:6%;height:14%;border-radius:50%;background:rgba(120,86,52,.10);filter:blur(16px)}
+.item-pic img{position:relative;z-index:2;max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 14px 22px rgba(90,62,40,.16))}
+.item-body{padding:42px 52px;display:flex;flex-direction:column;justify-content:center}
+.item-en{font-size:12px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
+.item-body h3{font-family:var(--serif);font-size:29px;line-height:1.45;color:var(--ink);letter-spacing:.03em}
+.item-body h3 span{font-size:25px;color:var(--brown)}
+.item-desc{margin-top:14px;font-size:14.5px;line-height:2;color:var(--ink-3);letter-spacing:.03em;max-width:580px}
+.item-spec{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
+.item-spec span{font-size:12px;color:var(--ink-2);background:rgba(244,237,222,.9);border:1px solid rgba(200,163,96,.28);padding:6px 14px;border-radius:2px;letter-spacing:.06em}
+.item-foot{margin-top:30px;display:flex;align-items:center;gap:26px}
+.item-price{display:flex;align-items:baseline;gap:8px}
+.item-price b{font-family:var(--serif);font-size:30px;color:var(--brown)}
+.item-price b i{font-style:normal;font-size:17px;margin-right:2px}
+.item-price s{font-size:13px;color:#B7A695}
+.item-note{font-size:12px;letter-spacing:.14em;color:var(--ink-3)}
+
+/* ---------- 5 山野宝藏 ---------- */
+.treasure{position:relative;padding:112px 0 120px;overflow:hidden;background:#E3EADD}
+.treasure-bg{position:absolute;inset:0;background:url("images/bg-bamboo.jpg") center/cover no-repeat}
+.treasure-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(251,247,238,.92),rgba(243,244,235,.85) 45%,rgba(251,247,238,.92))}
+.treasure .wrap{z-index:2}
+.treasure-row{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:28px}
+.t-card{position:relative;border-radius:3px;overflow:hidden;background:#fff;border:1px solid rgba(200,163,96,.3);
+  box-shadow:var(--shadow-s);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.t-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-m)}
+.t-card .pic{height:340px;overflow:hidden;background:#F4EADA}
+.t-card .pic img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+.t-card:hover .pic img{transform:scale(1.05)}
+.t-card .cap{position:absolute;left:0;right:0;bottom:0;padding:28px 32px;z-index:3;
+  background:linear-gradient(180deg,rgba(44,31,24,0),rgba(44,31,24,.74));color:#FBF7EE}
+.t-card .cap b{display:block;font-family:var(--serif);font-size:21px;letter-spacing:.05em;font-weight:600}
+.t-card .cap span{display:block;margin-top:8px;font-size:11px;letter-spacing:.22em;color:rgba(251,247,238,.72)}
+.t-wide{display:grid;grid-template-columns:620px 1fr;background:#fff;border:1px solid rgba(200,163,96,.3);border-radius:3px;
+  overflow:hidden;box-shadow:var(--shadow-m)}
+.t-wide .pic{height:400px;background:linear-gradient(160deg,#FBF6EA,#F1E6D0 62%,#E7D8BC);display:grid;place-items:center;padding:26px}
+.t-wide .pic img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 16px 26px rgba(90,62,40,.16))}
+.t-wide .body{padding:56px 60px;display:flex;flex-direction:column;justify-content:center}
+.t-wide .body h3{font-family:var(--serif);font-size:31px;line-height:1.5;color:var(--ink);letter-spacing:.03em}
+.t-wide .body p{margin-top:18px;font-size:14.5px;line-height:2.05;color:var(--ink-3);letter-spacing:.03em}
+.t-wide .body .btn{align-self:flex-start;margin-top:32px}
+
+/* ---------- 6 核心卖点 ---------- */
+.benefits{padding:112px 0 116px;background:linear-gradient(180deg,#FBF7EE,#F5EEE1)}
+.benefit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.benefit-card{position:relative;background:#fff;border:1px solid rgba(200,163,96,.3);border-radius:3px;padding:44px 32px 40px;
+  text-align:center;overflow:hidden;box-shadow:var(--shadow-s);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.benefit-card::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--gold-soft),var(--gold),var(--gold-soft))}
+.benefit-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-m)}
+.benefit-icon{width:96px;height:96px;margin:0 auto 26px;border-radius:50%;display:grid;place-items:center;color:var(--brown);
+  background:radial-gradient(circle at 32% 28%,#FBF7EE,#F0E7D5);border:1px solid rgba(200,163,96,.4)}
+.benefit-icon svg{width:46px;height:46px}
+.benefit-card h3{font-family:var(--serif);font-size:24px;color:var(--ink);letter-spacing:.06em;margin-bottom:12px}
+.benefit-card p{font-size:13.5px;line-height:1.95;color:var(--ink-3);letter-spacing:.03em}
+.benefit-card .en{margin-top:18px;font-size:10.5px;letter-spacing:.26em;color:var(--gold);text-transform:uppercase}
+
+/* ---------- 7 用户口碑 ---------- */
+.reviews{padding:112px 0 118px;background:#FBF7EE;position:relative;overflow:hidden}
+.reviews::before{content:"";position:absolute;width:720px;height:720px;right:-240px;top:-300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(200,163,96,.14),transparent 62%)}
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;position:relative;z-index:2}
+.review-card{background:#fff;border:1px solid rgba(200,163,96,.3);border-radius:3px;overflow:hidden;box-shadow:var(--shadow-s);
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease);display:flex;flex-direction:column}
+.review-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-m)}
+.review-photo{height:214px;overflow:hidden;background:#F1E7D4}
+.review-photo img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+.review-card:hover .review-photo img{transform:scale(1.05)}
+.review-body{padding:32px 34px 30px;display:flex;flex-direction:column;flex:1}
+.stars{display:flex;gap:5px;margin-bottom:18px;color:var(--gold)}
+.stars svg{width:17px;height:17px}
+.review-body p{font-family:var(--serif);font-size:19px;line-height:1.8;color:var(--ink);letter-spacing:.03em;flex:1}
+.review-user{margin-top:24px;padding-top:20px;border-top:1px dashed rgba(200,163,96,.42);display:flex;align-items:center;gap:14px}
+.avatar{width:44px;height:44px;border-radius:50%;flex:none;display:grid;place-items:center;font-family:var(--serif);font-size:17px;
+  color:#F6E7C4;background:linear-gradient(150deg,#8A4433,#5C2A1E)}
+.avatar--green{background:linear-gradient(150deg,#7E9A6C,#3F5B38)}
+.avatar--gold{background:linear-gradient(150deg,#D3B273,#B9904A);color:#4A2C18}
+.review-user b{display:block;font-size:14px;color:var(--ink);letter-spacing:.08em;font-weight:600}
+.review-user span{display:block;margin-top:5px;font-size:11.5px;color:var(--ink-3);letter-spacing:.1em}
+.review-stat{margin-top:32px;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(200,163,96,.32);border-radius:3px;
+  background:linear-gradient(180deg,#fff,#FBF6EA);overflow:hidden}
+.review-stat div{padding:30px 0;text-align:center;border-right:1px solid rgba(200,163,96,.26)}
+.review-stat div:last-child{border-right:0}
+.review-stat b{display:block;font-family:var(--serif);font-size:34px;color:var(--brown)}
+.review-stat span{display:block;margin-top:10px;font-size:12px;letter-spacing:.2em;color:var(--ink-3)}
+
+/* ---------- 8 服务保障 ---------- */
+.service{position:relative;padding:96px 0 104px;background:linear-gradient(135deg,#46603F,#39502F 55%,#2F422A);overflow:hidden}
+.service::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(70% 120% at 12% 0%,rgba(126,154,108,.32),transparent 60%),radial-gradient(60% 100% at 92% 100%,rgba(200,163,96,.18),transparent 62%)}
+.service .wrap{z-index:3}
+.service .sec-title{color:#FBF7EE}
+.service .sec-sub{color:rgba(251,247,238,.68)}
+.service .rule{background:linear-gradient(90deg,transparent,rgba(230,211,170,.6) 20%,rgba(230,211,170,.6) 80%,transparent)}
+.service .rule::after{background:var(--gold-soft)}
+.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.service-card{background:rgba(251,247,238,.95);border:1px solid rgba(230,211,170,.35);border-radius:3px;padding:38px 30px 34px;
+  display:flex;flex-direction:column;gap:18px;transition:transform .45s var(--ease),background .45s var(--ease)}
+.service-card:hover{transform:translateY(-6px);background:#FBF7EE}
+.service-card .ico{width:58px;height:58px;border-radius:2px;display:grid;place-items:center;color:var(--green);
+  background:rgba(79,107,71,.08);border:1px solid rgba(79,107,71,.2)}
+.service-card .ico svg{width:28px;height:28px}
+.service-card h3{font-family:var(--serif);font-size:21px;color:var(--ink);letter-spacing:.06em}
+.service-card p{font-size:13px;line-height:1.9;color:var(--ink-3);letter-spacing:.03em}
+.service-card .line{height:1px;background:linear-gradient(90deg,var(--gold-line),transparent)}
+
+/* ---------- 9 品牌理念 ---------- */
+.philosophy{position:relative;padding:130px 0;text-align:center;overflow:hidden;background:linear-gradient(180deg,#FBF7EE,#F2E9D8)}
+.philosophy::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:920px;height:540px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(200,163,96,.16),transparent)}
+.philosophy::after{content:"";position:absolute;inset:0;background:url("images/review-mom.jpg") center 32%/cover no-repeat;opacity:.16;filter:blur(2px) saturate(.92)}
+.philosophy .wrap{z-index:2}
+.philosophy .mark{width:132px;margin:0 auto 30px;mix-blend-mode:multiply}
+.philosophy h2{font-family:var(--serif);font-weight:700;font-size:52px;line-height:1.5;color:var(--brown-deep);letter-spacing:.04em}
+.philosophy h2 .gold{color:var(--gold)}
+.philosophy p{margin-top:22px;font-size:16px;line-height:2.1;color:var(--ink-2);letter-spacing:.1em}
+.philosophy .seal-row{margin-top:44px;display:flex;justify-content:center;gap:78px}
+.philosophy .seal-row div{display:flex;flex-direction:column;align-items:center;gap:12px}
+.philosophy .seal-row .dot{width:52px;height:52px;border-radius:50%;border:1px solid rgba(200,163,96,.55);display:grid;place-items:center;color:var(--brown)}
+.philosophy .seal-row .dot svg{width:24px;height:24px}
+.philosophy .seal-row span{font-size:12px;letter-spacing:.24em;color:var(--ink-3)}
+
+/* ---------- 10 页脚 ---------- */
+.footer{background:#3B2A22;color:rgba(251,247,238,.72);padding:74px 0 0;position:relative;overflow:hidden}
+.footer::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(200,163,96,.6),transparent)}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;padding-bottom:54px}
+.footer-brand .logo img{width:74px;height:74px;mix-blend-mode:normal;border-radius:50%;background:#FBF7EE;padding:6px}
+.footer-brand .logo-name{color:#F6E7C4}
+.footer-brand .logo-tag{color:rgba(251,247,238,.45)}
+.footer-slogan{margin-top:24px;font-family:var(--serif);font-size:20px;color:#FBF7EE;letter-spacing:.1em}
+.footer-desc{margin-top:16px;font-size:13px;line-height:2;color:rgba(251,247,238,.55);max-width:330px;letter-spacing:.03em}
+.footer-col h4{font-family:var(--serif);font-size:16px;color:#FBF7EE;letter-spacing:.14em;margin-bottom:22px;font-weight:600}
+.footer-col a{display:block;font-size:13px;color:rgba(251,247,238,.6);margin-bottom:14px;letter-spacing:.05em;transition:color .3s}
+.footer-col a:hover{color:var(--gold-soft)}
+.footer-after{border-top:1px solid rgba(251,247,238,.12);padding:26px 0;display:flex;align-items:center;justify-content:space-between}
+.footer-after .items{display:flex;align-items:center;font-size:13px;letter-spacing:.12em;color:rgba(251,247,238,.72)}
+.footer-after .items span{padding:0 22px;border-right:1px solid rgba(251,247,238,.18)}
+.footer-after .items span:first-child{padding-left:0}
+.footer-after .items span:last-child{border-right:0}
+.footer-after .copy{font-size:12px;letter-spacing:.08em;color:rgba(251,247,238,.42)}
+.footer-bottom{background:rgba(0,0,0,.18);padding:18px 0;text-align:center;font-size:11.5px;letter-spacing:.14em;color:rgba(251,247,238,.4)}
+
+/* ---------- 原图完整性修正 ---------- */
+.hero{height:780px;min-height:0;background:#EFE0C4}
+.hero::before,.hero::after,.hero-banner{display:none}
+.hero-product{right:28px;bottom:38px;width:380px;height:650px;max-width:calc(100% - 56px);padding:10px;object-fit:contain;background:rgba(251,247,238,.96);border:1px solid rgba(200,163,96,.34);box-shadow:0 24px 54px rgba(74,44,28,.2);filter:none}
+
+.item-pic--poster{height:680px}
+.item-pic--square{height:520px}
+.item-pic--gift{height:380px}
+.item-pic img{object-fit:contain}
+
+.t-card--tall .pic{height:620px;padding:22px}
+.t-card .pic img{object-fit:contain}
+.t-card .cap{position:relative;background:#fff;color:var(--ink);padding:24px 32px}
+.t-card .cap span{color:var(--ink-3)}
+.t-card:hover .pic img{transform:none}
+
+.review-grid{align-items:start}
+.review-photo{height:auto;aspect-ratio:4/3}
+.review-photo--portrait{aspect-ratio:1154/2074}
+.review-photo img{object-fit:contain}
+.review-card:hover .review-photo img{transform:none}
+/* 入场动效（无脚本时内容完整可见） */
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.js .reveal.is-in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<!-- ================= 线性图标 ================= -->
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
+  <symbol id="ic-ear" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 42V16"/><path d="M24 30c-6 0-10-3-11-9 6-1 10 2 11 9Z"/><path d="M24 30c6 0 10-3 11-9-6-1-10 2-11 9Z"/>
+    <path d="M24 22c-5 0-8-3-9-8 5-1 8 2 9 8Z"/><path d="M24 22c5 0 8-3 9-8-5-1-8 2-9 8Z"/>
+    <path d="M24 14c-4 0-6-2-7-6 4-1 6 1 7 6Z"/><path d="M24 14c4 0 6-2 7-6-4-1-6 1-7 6Z"/><path d="M24 16V8"/>
+  </symbol>
+  <symbol id="ic-bowl" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 24h32c0 9-7 15-16 15S8 33 8 24Z"/><path d="M13 24c1-6 5-9 11-9s10 3 11 9"/>
+    <path d="M18 39h12"/><path d="M21 39v3h6v-3"/><path d="M20 9c-2-2-2-4 0-6"/><path d="M28 11c-2-2-2-4 0-6"/>
+  </symbol>
+  <symbol id="ic-pack" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M13 12h22v28H13z"/><path d="M13 12l3-5h16l3 5"/><path d="M18 7v5"/><path d="M30 7v5"/>
+    <path d="M17 20h14v9H17z"/><path d="M21 33h6"/>
+  </symbol>
+  <symbol id="ic-table" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 22h36"/><path d="M10 22v16"/><path d="M38 22v16"/><path d="M15 22c0-4 4-7 9-7s9 3 9 7"/>
+    <path d="M17 34h14"/><path d="M24 34v-5"/><circle cx="12" cy="34" r="3"/><circle cx="36" cy="34" r="3"/>
+  </symbol>
+  <symbol id="ic-shield" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 6l13 5v11c0 9-5 15-13 20-8-5-13-11-13-20V11Z"/><path d="M18 23l5 5 9-10"/>
+  </symbol>
+  <symbol id="ic-leaf" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M38 10C22 10 12 17 12 28c0 5 4 9 9 9 11 0 17-11 17-27Z"/><path d="M34 14C26 21 21 28 19 37"/>
+    <path d="M22 30c-3-1-5-3-6-6"/><path d="M28 24c2 1 4 3 5 6"/>
+  </symbol>
+  <symbol id="ic-cert" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="24" cy="20" r="12"/><path d="M17 30l-2 12 9-5 9 5-2-12"/><path d="M19 20l4 4 7-8"/>
+  </symbol>
+  <symbol id="ic-gift" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 18h32v22H8z"/><path d="M8 26h32"/><path d="M24 18v22"/>
+    <path d="M24 18c-8 0-11-3-11-7 0-3 4-4 7-1 3 2 4 5 4 8Z"/>
+    <path d="M24 18c8 0 11-3 11-7 0-3-4-4-7-1-3 2-4 5-4 8Z"/>
+  </symbol>
+  <symbol id="ic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 12h15"/><path d="M13 6l6 6-6 6"/>
+  </symbol>
+  <symbol id="ic-star" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 2.4l2.9 6.1 6.7.95-4.85 4.7 1.15 6.65L12 17.6l-5.9 3.2 1.15-6.65L2.4 9.45l6.7-.95z"/>
+  </symbol>
+  <symbol id="ic-seedling" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 42V22"/><path d="M24 26c-8 0-13-4-14-12 8-1 13 3 14 12Z"/>
+    <path d="M24 24c8 0 13-4 14-12-8-1-13 3-14 12Z"/><path d="M14 42h20"/>
+  </symbol>
+  <symbol id="ic-mountain" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 36l12-20 8 12 5-7 11 15z"/><circle cx="34" cy="12" r="4"/>
+  </symbol>
+  <symbol id="ic-water" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 18c4-3 8-3 12 0s8 3 12 0 8-3 12 0"/><path d="M6 28c4-3 8-3 12 0s8 3 12 0 8-3 12 0"/>
+    <path d="M6 38c4-3 8-3 12 0s8 3 12 0 8-3 12 0"/>
+  </symbol>
+</svg>
+
+<!-- ================= 1 顶部导航栏 ================= -->
+<header class="nav" id="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="【养】良谷米 首页">
+      <img src="images/logo-full.png" alt="【养】良谷米 品牌标识" />
+      <span class="logo-text">
+        <span class="logo-name">良谷米</span>
+        <span class="logo-tag">YANG LIANG GU MI · YIYANG</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="#top" class="is-active">首页</a>
+      <a href="#popular">产品中心</a>
+      <a href="#popular">人气单品</a>
+      <a href="#origin">产地溯源</a>
+      <a href="#reviews">用户评价</a>
+      <a href="#service">服务保障</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= 2 首屏 Banner ================= -->
+<section class="hero" id="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-veil" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="hero-badge"><i></i>益阳 · 洞庭沃土｜当季新米</span>
+      <h1 class="hero-title"><span class="nl">一碗<span class="hl">良谷</span>，</span><span class="nl">养家人，养嘉人</span></h1>
+      <p class="hero-sub">益阳原产良谷米<span class="sep"></span>温润日常，滋养全家</p>
+      <div class="hero-actions">
+        <a href="#popular" class="btn btn--green">立即选购<svg><use href="#ic-arrow"/></svg></a>
+        <a href="#origin" class="btn btn--ghost">了解产地溯源</a>
+      </div>
+      <div class="hero-meta">
+        <div><b>当季</b><span>新米应季收割</span></div>
+        <div><b>原产</b><span>益阳洞庭沃土</span></div>
+        <div><b>锁鲜</b><span>真空定量分装</span></div>
+      </div>
+    </div>
+    <div class="hero-stage" aria-hidden="true">
+      <img class="hero-product" src="images/product-bag-poster.png" alt="良谷米规格任选与产品组合完整实拍" />
+    </div>
+    <div class="hero-tag">
+      <span class="dot"><svg><use href="#ic-leaf"/></svg></span>
+      <span><span class="t1">当季新米 · 真空锁鲜</span><span class="t2">YIYANG ORIGINAL GRAIN RICE</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 3 品牌产地板块 ================= -->
+<section class="origin" id="origin">
+  <div class="wrap">
+    <div class="origin-top reveal">
+      <div class="sec-head sec-head--left" style="margin-bottom:0">
+        <p class="eyebrow">Origin · Yiyang</p>
+        <h2 class="sec-title">益阳原产，<em>自然滋养</em></h2>
+        <div class="rule"></div>
+      </div>
+      <p class="origin-lead">洞庭沃土滋养，谷物自然生长，保留本味清香。从<strong>洞庭湖畔的生态稻田</strong>，到<strong>家庭餐桌的一碗热饭</strong>，养良谷米只做一件事——把自然的温润，原原本本带到你家。</p>
+    </div>
+    <div class="origin-grid">
+      <article class="origin-card reveal">
+        <div class="pic"><span class="no">NO.01</span><img src="images/origin-field.jpg" alt="益阳洞庭湖畔的生态稻田" /></div>
+        <div class="txt">
+          <h3>洞庭沃土滋养</h3>
+          <p>地处洞庭湖平原，水系丰沛、日照充足、昼夜温差适宜，稻田依水而生，谷粒饱满温润。</p>
+          <div class="tagline"><i></i>洞庭沃土 · 生态稻田</div>
+        </div>
+      </article>
+      <article class="origin-card reveal d1">
+        <div class="pic"><span class="no">NO.02</span><img src="images/origin-ears.jpg" alt="自然成熟的良谷米稻穗" /></div>
+        <div class="txt">
+          <h3>谷物自然生长</h3>
+          <p>顺应节气耕作，慢熟成、足日晒，不赶时间抢收，让谷穗在田里自然积攒清甜米香。</p>
+          <div class="tagline"><i></i>自然生长 · 保留本味</div>
+        </div>
+      </article>
+      <article class="origin-card reveal d2">
+        <div class="pic"><span class="no">NO.03</span><img src="images/origin-farmer.jpg" alt="农家在田间除草管护稻田" /></div>
+        <div class="txt">
+          <h3>农家生态种植</h3>
+          <p>与本地农家共同耕作，从育苗插秧到田间管护，一家人守着同一片稻田，也守着同一份本味。</p>
+          <div class="tagline"><i></i>农家种植 · 家庭日常</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- ================= 4 人气单品 ================= -->
+<section class="popular" id="popular">
+  <div class="popular-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Popular Items</p>
+      <h2 class="sec-title">「人气单品」<em>食养好物</em></h2>
+      <p class="sec-sub">纯正洞庭山野，舌尖上的本味</p>
+      <div class="rule"></div>
+    </div>
+    <div class="item-list">
+      <article class="item-card reveal">
+        <div class="item-pic item-pic--poster"><img src="images/product-bag-poster.png" alt="良谷米家庭袋装与米碗完整实拍" /></div>
+        <div class="item-body">
+          <p class="item-en">Yiyang Original Grain Rice</p>
+          <h3>益阳原产良谷米｜<span>生态农耕，全家日常主食</span></h3>
+          <p class="item-desc">洞庭湖畔生态稻田当季新割，颗粒饱满、米香清透。蒸煮后软糯回甘，适合作为全家一日三餐的基础主食。</p>
+          <div class="item-spec"><span>2kg 家庭袋装</span><span>当季新米</span><span>真空锁鲜</span><span>益阳原产</span></div>
+          <div class="item-foot">
+            <div class="item-price"><b><i>¥</i>89</b><s>¥109</s></div>
+            <a href="#" class="btn btn--green">点击购买<svg><use href="#ic-arrow"/></svg></a>
+            <span class="item-note">顺丰包邮 · 48h 内发出</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="item-card reveal d1">
+        <div class="item-pic item-pic--square"><img src="images/product-500g-clean.png" alt="良谷米 500g 独立小包装完整实拍" /></div>
+        <div class="item-body">
+          <p class="item-en">Portable Individual Pack</p>
+          <h3>定量分装良谷米｜<span>一次一餐，方便新鲜</span></h3>
+          <p class="item-desc">500g 独立小包装，一次一袋刚刚好。拆袋即煮、不返潮不结块，独居、宿舍与出差路上的轻便主食。</p>
+          <div class="item-spec"><span>500g × 6 袋</span><span>独立分装</span><span>一次一餐</span><span>便携新鲜</span></div>
+          <div class="item-foot">
+            <div class="item-price"><b><i>¥</i>49</b><s>¥59</s></div>
+            <a href="#" class="btn btn--green">点击购买<svg><use href="#ic-arrow"/></svg></a>
+            <span class="item-note">独立锁鲜 · 开袋即煮</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="item-card reveal d2">
+        <div class="item-pic item-pic--gift"><img src="images/product-gift-red.jpg" alt="良谷米精品礼盒实拍" /></div>
+        <div class="item-body">
+          <p class="item-en">Premium Gift Box</p>
+          <h3>良谷米精品礼盒｜<span>馈赠与嘉人，体面好礼</span></h3>
+          <p class="item-desc">红棕礼盒配浅金压纹，内置独立锁鲜小包装。节日走访、探亲送礼，一份来自洞庭原乡的温润心意。</p>
+          <div class="item-spec"><span>500g × 8 袋</span><span>礼盒装</span><span>可定制卡片</span><span>送礼体面</span></div>
+          <div class="item-foot">
+            <div class="item-price"><b><i>¥</i>198</b><s>¥238</s></div>
+            <a href="#" class="btn btn--green">点击购买<svg><use href="#ic-arrow"/></svg></a>
+            <span class="item-note">含礼盒提袋 · 支持定制</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5 山野宝藏合集 ================= -->
+<section class="treasure" id="treasure">
+  <div class="treasure-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Collection of Mountain Treasures</p>
+      <h2 class="sec-title">「山野宝藏」<em>合集</em></h2>
+      <p class="sec-sub">洞庭原乡，本味尝鲜，城市难寻的田间好物</p>
+      <div class="rule"></div>
+    </div>
+    <div class="treasure-row">
+      <article class="t-card t-card--tall reveal">
+        <div class="pic"><img src="images/product-bag-poster.png" alt="良谷米家庭袋装完整实拍" /></div>
+        <div class="cap">
+          <b>洞庭沃土，自然农耕｜良谷米</b>
+          <span>YIYANG ORIGINAL GRAIN RICE</span>
+        </div>
+      </article>
+      <article class="t-card t-card--tall reveal d1">
+        <div class="pic"><img src="images/product-500g-clean.png" alt="良谷米独立小包装完整实拍" /></div>
+        <div class="cap">
+          <b>定量分装，一餐一袋｜独立装良谷米</b>
+          <span>PORTABLE INDIVIDUAL PACK</span>
+        </div>
+      </article>
+    </div>
+    <article class="t-wide reveal d2">
+      <div class="pic"><img src="images/product-gift-set.jpg" alt="良谷米精品礼盒组合实拍" /></div>
+      <div class="body">
+        <p class="item-en">Premium Gift Box</p>
+        <h3>益阳原产，馈赠与嘉人｜良谷米精品礼盒</h3>
+        <p>礼盒内含 8 袋独立锁鲜良谷米，一次一餐的定量分装。红棕与浅金的新中式配色，配可书写心意卡片，送长辈、送亲友、送同事都体面。</p>
+        <a href="#" class="btn btn--green">点击购买<svg><use href="#ic-arrow"/></svg></a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= 6 核心卖点 ================= -->
+<section class="benefits" id="benefits">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Why Choose Us</p>
+      <h2 class="sec-title">为什么选<em>【养】良谷米</em></h2>
+      <p class="sec-sub">一碗好米饭的标准，交给一家人的舌头来判断</p>
+      <div class="rule"></div>
+    </div>
+    <div class="benefit-grid">
+      <article class="benefit-card reveal">
+        <div class="benefit-icon"><svg><use href="#ic-ear"/></svg></div>
+        <h3>软糯适口</h3>
+        <p>当季新米，蒸煮后粒粒分明又柔糯回甘，冷饭也不发硬，空口吃都带清甜米香。</p>
+        <p class="en">Soft &amp; Chewy</p>
+      </article>
+      <article class="benefit-card reveal d1">
+        <div class="benefit-icon"><svg><use href="#ic-bowl"/></svg></div>
+        <h3>好消化</h3>
+        <p>米粒饱满、充分熟化，煮粥煮饭都温和好吸收，适合日常清淡饮食节奏。</p>
+        <p class="en">Easy To Digest</p>
+      </article>
+      <article class="benefit-card reveal d2">
+        <div class="benefit-icon"><svg><use href="#ic-table"/></svg></div>
+        <h3>全家适用</h3>
+        <p>从孩子的第一碗软饭，到长辈的一碗白粥，一日三餐的主食都好搭配。</p>
+        <p class="en">For The Family</p>
+      </article>
+      <article class="benefit-card reveal d3">
+        <div class="benefit-icon"><svg><use href="#ic-pack"/></svg></div>
+        <h3>真空锁鲜</h3>
+        <p>脱壳后及时真空分装，隔绝潮气与异味，开袋那一刻仍然是新米清香。</p>
+        <p class="en">Vacuum Fresh</p>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- ================= 7 用户口碑 ================= -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Customer Reviews</p>
+      <h2 class="sec-title">大家都在吃的<em>滋养好米</em></h2>
+      <p class="sec-sub">真实家庭餐桌上的反馈，是我们最在意的口碑</p>
+      <div class="rule"></div>
+    </div>
+    <div class="review-grid">
+      <article class="review-card reveal">
+        <div class="review-photo review-photo--portrait"><img src="images/review-family-full.png" alt="一家人围坐餐桌喝粥的完整场景" /></div>
+        <div class="review-body">
+          <div class="stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+          <p>家里老人孩子都爱吃，煮出来粒粒分明，米香很自然，不冲鼻。</p>
+          <div class="review-user">
+            <span class="avatar">陈</span>
+            <span><b>陈女士</b><span>已购 · 益阳原产良谷米 2kg</span></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card reveal d1">
+        <div class="review-photo review-photo--portrait"><img src="images/review-baby-full.png" alt="宝宝在餐椅上吃良谷米粥的完整场景" /></div>
+        <div class="review-body">
+          <div class="stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+          <p>清香软糯，煮米饭很好吃，熬粥也细腻，孩子一口一口吃得很香。</p>
+          <div class="review-user">
+            <span class="avatar avatar--green">林</span>
+            <span><b>林女士</b><span>复购 3 次 · 独立装良谷米</span></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card reveal d2">
+        <div class="review-photo"><img src="images/product-gift-set.jpg" alt="良谷米精品礼盒与提袋实拍" /></div>
+        <div class="review-body">
+          <div class="stars"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></div>
+          <p>包装干净，送人也体面。礼盒里的独立小袋，长辈用起来很方便。</p>
+          <div class="review-user">
+            <span class="avatar avatar--gold">周</span>
+            <span><b>周女士</b><span>已购 · 良谷米精品礼盒</span></span>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="review-stat reveal d3">
+      <div><b>4.9</b><span>综合评分</span></div>
+      <div><b>12,000+</b><span>累计家庭</span></div>
+      <div><b>96%</b><span>复购推荐</span></div>
+      <div><b>100%</b><span>原产地直发</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 8 服务保障 ================= -->
+<section class="service" id="service">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow" style="color:rgba(230,211,170,.88)">Service Guarantee</p>
+      <h2 class="sec-title">服务保障</h2>
+      <p class="sec-sub">安心选购，新鲜到家</p>
+      <div class="rule"></div>
+    </div>
+    <div class="service-grid">
+      <article class="service-card reveal">
+        <span class="ico"><svg><use href="#ic-shield"/></svg></span>
+        <h3>无忧售后</h3>
+        <p>收到货品如有破损、少件或品质疑问，联系客服优先处理，不让一顿好饭被耽搁。</p>
+        <span class="line"></span>
+      </article>
+      <article class="service-card reveal d1">
+        <span class="ico"><svg><use href="#ic-leaf"/></svg></span>
+        <h3>新鲜承诺</h3>
+        <p>当季新米脱壳后及时真空分装，按需发货，尽量缩短从米仓到你厨房的距离。</p>
+        <span class="line"></span>
+      </article>
+      <article class="service-card reveal d2">
+        <span class="ico"><svg><use href="#ic-cert"/></svg></span>
+        <h3>正品保障</h3>
+        <p>益阳原产地直发，一物一码可溯源，包装密封完好，认准【养】良谷米。</p>
+        <span class="line"></span>
+      </article>
+      <article class="service-card reveal d3">
+        <span class="ico"><svg><use href="#ic-gift"/></svg></span>
+        <h3>定制礼盒</h3>
+        <p>企业团购、节日礼赠可定制贺卡与礼盒组合，专属客服一对一沟通排期。</p>
+        <span class="line"></span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 9 品牌理念 ================= -->
+<section class="philosophy" id="philosophy">
+  <div class="wrap">
+    <img class="mark reveal" src="images/logo-full.png" alt="【养】良谷米 品牌印章" />
+    <h2 class="reveal d1">一碗良谷，<span class="gold">养家人，养嘉人</span></h2>
+    <p class="reveal d2">从田间到餐桌，把自然的温润，带进每一餐</p>
+    <div class="seal-row reveal d3">
+      <div><span class="dot"><svg><use href="#ic-seedling"/></svg></span><span>自然生长</span></div>
+      <div><span class="dot"><svg><use href="#ic-mountain"/></svg></span><span>洞庭原乡</span></div>
+      <div><span class="dot"><svg><use href="#ic-water"/></svg></span><span>湖水滋养</span></div>
+      <div><span class="dot"><svg><use href="#ic-bowl"/></svg></span><span>温热日常</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 10 页脚 ================= -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="logo" href="#top">
+          <img src="images/logo-full.png" alt="【养】良谷米 品牌标识" />
+          <span class="logo-text">
+            <span class="logo-name">良谷米</span>
+            <span class="logo-tag">YANG LIANG GU MI · YIYANG</span>
+          </span>
+        </a>
+        <p class="footer-slogan">一碗良谷，养家人，养嘉人</p>
+        <p class="footer-desc">益阳原产良谷米，来自洞庭湖畔的生态稻田。我们坚持当季新米、原产地直发，让每一餐都吃到自然的温润。</p>
+      </div>
+      <div class="footer-col">
+        <h4>关于品牌</h4>
+        <a href="#origin">品牌故事</a>
+        <a href="#origin">产地溯源</a>
+        <a href="#philosophy">品牌理念</a>
+        <a href="#reviews">用户评价</a>
+      </div>
+      <div class="footer-col">
+        <h4>产品中心</h4>
+        <a href="#popular">益阳原产良谷米</a>
+        <a href="#popular">独立小包装</a>
+        <a href="#popular">精品礼盒装</a>
+        <a href="#treasure">山野宝藏合集</a>
+      </div>
+      <div class="footer-col">
+        <h4>服务支持</h4>
+        <a href="#service">售后热线 400-000-0000</a>
+        <a href="#service">新鲜承诺</a>
+        <a href="#service">破损补发</a>
+        <a href="#service">企业团购定制</a>
+      </div>
+    </div>
+    <div class="footer-after">
+      <div class="items"><span>售后热线</span><span>新鲜承诺</span><span>正品保障</span><span>破损补发</span></div>
+      <p class="copy">© 2026 良谷米农业科技有限公司 · 湘ICP备00000000号</p>
+    </div>
+  </div>
+  <div class="footer-bottom">产自湖南益阳 · 洞庭湖平原生态稻田｜本页面为品牌首页视觉设计稿，价格与认证信息以实际上线内容为准</div>
+</footer>
+
+<script>
+(function(){
+  var root=document.getElementById('top')||document;
+  var nav=document.querySelector('.nav');
+  var onScroll=function(){ nav.classList.toggle('is-stuck', window.scrollY>10); };
+  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+  var items=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target);} });},
+      {rootMargin:'0px 0px -10% 0px',threshold:.1});
+    items.forEach(function(el){ io.observe(el); });
+  } else { items.forEach(function(el){ el.classList.add('is-in'); }); }
+})();
+</script>
+</body>
+</html>
